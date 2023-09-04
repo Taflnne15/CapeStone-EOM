@@ -20,13 +20,7 @@
     <div class="card">
       <div class="row g-0">
         <div class="col-md-4 imga">
-          <img
-            src="https://i.postimg.cc/9MWbQYNr/wallpaperflare-com-wallpaper-9.jpg"
-            class="img-fluid rounded-start"
-            alt="..."
-            height="100%
-      "
-          />
+<img src="" alt="">
         </div>
         <div class="col-md-8">
           <div class="card-body">
@@ -66,7 +60,7 @@ export default {
   width: 100%;
   height: 100vh;
   /* background: red; */
-  background-image: url(https://i.postimg.cc/9M387XGK/wallpaperflare-com-wallpaper-5.jpg);
+  background-image: url(https://ibb.co/ZgHVwN4);
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
