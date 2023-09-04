@@ -31,7 +31,8 @@ h6{
     color: white;
 }
 p{
-    color: white
+    color: white;
+    margin: 0;
 };
 
 </style>

@@ -1,6 +1,10 @@
 <template>
-    <div class="Bookings">
+    <div class="userProfile">
 
+
+
+
+        
     </div>
 </template>
 

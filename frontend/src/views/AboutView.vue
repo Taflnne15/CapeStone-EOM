@@ -1,5 +1,4 @@
 <template>
- 
   <div class="about">
     <div class="container text-center">
   <div class="row align-items-center">
@@ -131,6 +130,9 @@ justify-content: center;
   background-repeat: no-repeat;
   background-size: cover;
 } */
+.col{
+  margin-right: 90px;
+}
 
 
 
