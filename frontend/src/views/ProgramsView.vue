@@ -27,7 +27,7 @@
     width: 100%;
   height: 100vh;
   /* background: red; */
-  background-image: url(https://i.postimg.cc/Y0KpghY4/gir-singing.jpg);
+  background-image: url(https://i.postimg.cc/c4GJZXzp/wallpaperflare-com-wallpaper-16.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;

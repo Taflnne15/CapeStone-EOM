@@ -53,30 +53,13 @@ Playing an instrument is an extension of who you are. Embrace your unique style 
   </div>
 </div>
   </div>
-  <div class="partners">
-<h1 class="h1P"> Our Partners </h1>
-<div id="carouselExample" class="carousel slide">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://i.postimg.cc/Vvs84SfJ/ibanez-removebg-preview.png" class="d-block w-60" alt="..." width="500px">
-    </div>
-    <div class="carousel-item">
-      <img src="h" class="d-block w-60" alt="..." width="500px">
-    </div>
-    <div class="carousel-item">
-      <img src="" class="d-block w-60" alt="..." width="500px">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+
+
+
 </div>
-  </div>
+<div class="words">
+  <span>
+"Unlock your musical potential with our expert music lessons. Whether you're a beginner or looking to refine your skills, our experienced instructors will guide you on a melodic journey. Discover the joy of playing your favorite instrument or mastering your singing talents. Join us for a harmonious experience that will enrich your passion for music."</span>
 </div>
 </template>
 <style>
@@ -105,17 +88,14 @@ h1{
   color:#c5202d;
 }
 .performance{
-  margin-top: 90px;
-  margin-bottom: 90px;
+ height: 100vh;
 }
 .card{
   display: flex;
 justify-content: center;
 }
 .partners{
-  margin-top: 90px;
-  margin-bottom: 90px;
-  background-color: black;
+height: 100vh;
 }
 .h1P{
   color: black;
@@ -132,6 +112,9 @@ justify-content: center;
 } */
 .col{
   margin-right: 90px;
+}
+.words{
+  margin-bottom: 100px;
 }
 
 

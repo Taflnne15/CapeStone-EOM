@@ -28,6 +28,11 @@ const routes = [
     component: () => import('../views/BookingsView.vue')
   },
   {
+    path: '/contact',
+    name: 'contact',
+    component: () => import('../views/LoginView.vue')
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import('../views/LoginView.vue')
