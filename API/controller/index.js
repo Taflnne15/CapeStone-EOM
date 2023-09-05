@@ -5,7 +5,7 @@ const {verifyToken} = require('../middleware/authenticate')
 const routes = express.Router()
 const {users, programs, bookings, events} = require('../model')
 
-routes.get('^/$|/Bookingsys', (req, res, next)=>{
+routes.get('^/$|/Capstone-eomp', (req, res, next)=>{
     users.fetchUsers(req,res)
     console.log("Welcome back user")
 })
