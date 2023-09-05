@@ -3,7 +3,7 @@ const path = require('path')
 const bodyParser = require('bodyParser')
 const {verifyToken} = require('../middleware/authenticate')
 const routes = express.Router()
-const {users, programs, bookings, events} = require('../model')
+const {users, bookings, events} = require('../model')
 
 routes.get('^/$|/Capstone-eomp', (req, res, next)=>{
     users.fetchUsers(req,res)
