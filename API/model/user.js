@@ -1,5 +1,6 @@
 const db = require('../config')
-const {hash, compare, hashSync} = require ('bcrpyt')
+const {hash, compare, hashSync} = require('bcrpyt')
+const {createToken} = require('../middleware/authenticate')
 
 class Users {
 fetchUsers(req, res){
@@ -52,13 +53,8 @@ db.query(query, async(err, results)=>{
             if(cErr) throw cErr
             //creating a token
             const token = createToken({
-                userEmail,
-                httpOnly
-            });
-            //saveToken
-            res.cookie("LegitUser", token, {
-                maxAge: 300000,
-                httpOnly: true
+                userEmail, 
+                userPass
             });
             if(cResult){
                 res.json({
@@ -81,7 +77,7 @@ db.query(query, async(err, results)=>{
 async register(req, res){
     const data = req.body
     //encrypt password
-    data.userPass = hash(data.userPass, 15)
+    data.userPass = hash(data.userPass, 10)
     //payload
     const user = {
         userEmail:data.userEmail,
@@ -97,12 +93,9 @@ async register(req, res){
         if(err) throw err 
         //creating token
         let token = createToken(user)
-        res.cookie("LegitUser", token, {
-            maxAge: 360000,
-            hhtpOnly: true
-        });
         res.json({
             status: res.statusCode,
+            token,
             msg: "You are now registered"
         })   
     })
