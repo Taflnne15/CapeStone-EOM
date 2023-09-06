@@ -18,7 +18,7 @@ app.use((req, res , next)=>{
     });
     //cookie parser and router 
     //cookieparser is set before router
-    app.use(cookieParser(), cors(), route);
+    app.use(cookieParser(), cors(), routes);
     app.use(
         express.json(),
         express.urlencoded({
@@ -38,7 +38,7 @@ app.use(
     cors(),
     routes
 )
-routes.get('^/$|Capstone-eomp', (req, res)=>{
+routes.get('^/$|/Capstone-eomp', (req, res)=>{
     res.sendFile(path.resolve(__dirname, './static/html/index.html'))
 })
 app.listen(port, ()=>{
