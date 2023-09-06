@@ -94,6 +94,7 @@ h1 {
   color: #c5202d;
 }
 .card {
+
   margin-bottom: 100px;
   margin-top: 100px;
 }
