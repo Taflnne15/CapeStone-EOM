@@ -6,7 +6,7 @@ const errorHandling = require('./middleware/error-handling')
 const cookieParser = require('cookie-parser')
 const port = +process.env.PORT || 3000
 
-app.use((req, res , next)=>{
+
     app.use((req, res, next)=>{
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Credentials", "true");
@@ -28,7 +28,7 @@ app.use((req, res , next)=>{
     //handling of errors
     app.use(errorHandling);
     //server
-})
+
 app.use(
     express.static('./static'),
     express.urlencoded({
