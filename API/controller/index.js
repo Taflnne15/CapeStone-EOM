@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-const bodyParser = require('bodyParser')
+const bodyParser = require('body-parser')
 const {verifyToken} = require('../middleware/authenticate')
 const routes = express.Router()
 const {users, bookings, events} = require('../model')
