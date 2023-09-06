@@ -17,7 +17,16 @@
   <label for="exampleFormControlInput1" class="form-label">Full Name </label>
   <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Taflynne Petersen" required>
 </div>
+<form class="row g-3">
 
+  <div class="col-auto">
+    <label for="inputPassword2" class="visually-hidden">Password</label>
+    <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+  </div>
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+  </div>
+</form>
 
     </div>
     
@@ -48,6 +57,9 @@ margin-left: 25%;
     width: 50%;
     border: 4px solid white;
    
+}
+label{
+    margin-left: 30px;
 }
 
 </style>
