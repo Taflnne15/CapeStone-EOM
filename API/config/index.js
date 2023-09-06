@@ -4,9 +4,9 @@ const {createPool} = require("mysql")
 //Set up database connection
 const connection = createPool({
     host:process.env.dbHost,
+    database:process.env.dbName,
     user:process.env.dbUser,
     password:process.env.dbPwd,
-    database:process.env.dbName,
     multipleStatements: true,
     connectionLimit: 30,
 })
