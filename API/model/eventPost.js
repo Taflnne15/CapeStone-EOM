@@ -16,7 +16,7 @@ fetchEvents(req, res){
 }
 updateEvent(req, res){
     const query = `
-    UPDATE Events SET ?
+    UPDATE eventPosts SET ?
     WHERE eventID ;
     `
     db.query(query,[req, body, req.params.ID],

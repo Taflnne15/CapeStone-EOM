@@ -4,13 +4,13 @@ class Bookings{
     fetchBookings(req, res){
         const query = 
         `
-        SELECT Bookings.bookingID, Users.userID, 
+        SELECT bookings.bookingID, Users.userID, 
         events.eventsID
-        FROM Bookings
+        FROM bookings
         INNER JOIN 
-        Users ON Bookings.bookingID = Users.userID
+        Users ON bookings.bookingID = Users.userID
         INNER JOIN 
-        eventPosts on Bookings.eventID = eventPosts.eventID
+        eventPosts on bookings.eventID = eventPosts.eventID
         `
         db.query(query, (err, results)=>{
             if(err) throw err;
@@ -22,14 +22,14 @@ class Bookings{
     }
     fetchBookings(req, res){
         const query = `
-        SELECT Bookings.bookingID, Users.userID, 
+        SELECT bookings.bookingID, Users.userID, 
         events.eventsID
-        FROM Bookings
+        FROM bookings
         INNER JOIN 
-        Users ON Bookings.bookingID = Users.userID
+        Users ON bookings.bookingID = Users.userID
         INNER JOIN 
-        eventPosts on Bookings.eventID = eventPosts.eventID
-        WHERE bookingsID = ${req.params.bookingsID};
+        eventPosts on bookings.eventID = eventPosts.eventID
+        WHERE bookingID = ${req.params.bookingsID};
         `
         db.query(query, [req.params.bookingID], (err, reults)=>{
             if(err) throw err
@@ -41,7 +41,7 @@ class Bookings{
     }
     insertBooking(req, res){
         const query =`
-        INSERT INTO Bookings VALUES(${req.params.bookingID}, ${req.params.userID}, ${req.params.bookingID})
+        INSERT INTO bookings VALUES(${req.params.bookingID}, ${req.params.userID}, ${req.params.bookingID})
         `
         db.query(query, [req.body, req.params.bookingID, req.params.userID, req.params.bookingID],
             (err)=>{
@@ -54,7 +54,7 @@ class Bookings{
     }
     async updateBooking(req, res){
         const query =`
-        UPDATE Bookings SET ?
+        UPDATE bookings SET ?
         `
         db.query(query, (err)=>{
             if(err) throw err
@@ -67,7 +67,7 @@ class Bookings{
     }
     removeBookings(req, res){
         const query =`
-        DELETE FROM Bookings WHERE bookingID
+        DELETE FROM bookings WHERE bookingID
 = ${req.params.bookingID} `
 db.query(query, [req.params.bookingID], (err)=>{
     if(err) throw err
