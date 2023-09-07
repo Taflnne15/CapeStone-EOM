@@ -1,13 +1,11 @@
 const express = require('express')
-const path = require('path')
 const bodyParser = require('body-parser')
 const {verifyToken} = require('../middleware/authenticate')
 const routes = express.Router()
 const {users, bookings, events} = require('../model')
 
-routes.get('^/$|/Capstone-eomp', (req, res, next)=>{
+routes.get('/users', (req, res)=>{
     users.fetchUsers(req,res)
-    console.log("Welcome back user")
 })
 routes.get('/user/:id', (req,res)=>{
     users.fetchUser(req, res)
@@ -15,7 +13,12 @@ routes.get('/user/:id', (req,res)=>{
 
 routes.post('/register', bodyParser.json(),
 (req, res)=>{
-    user.updateUser(req, res)
+    users.register(req, res)
+})
+
+routes.post('/login', bodyParser.json(),
+(req, res)=>{
+    users.login(req, res)
 })
 
 routes.patch('users/:id', bodyParser.json(),(

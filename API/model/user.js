@@ -9,13 +9,13 @@ fetchUsers(req, res){
     userGender, userEmail, userInterest, userProfileUrl
     FROM Users; 
     `
-    db.query(query,
-        (err, results)=>{
-            if (err) throw ErrorCodes,json({
-                status: res.statusCode,
-                results
-            })
-        })
+    db.query(query, (err, results) => {
+        if (err) throw err;
+        res.json({
+          status: res.statusCode,
+          results,
+        });
+      });
 }
 fetchUser(req, res){
     const query = `
@@ -121,7 +121,8 @@ deleteUser(req, res){
     WHERE userID = ${req.params.id};
     `
     db.query(query, (err)=>{
-        if(err) throw ErrorCodes.json({
+        if(err) throw err
+        res.json({
             status: res.statusCode,
             msg: "The usee records were deleted"
         })
