@@ -29,7 +29,7 @@
 
 <style scoped>
 .User{
-    width: 100%;
+  width: 100%;
   height: 80vh;
   /* background: red; */
   background-image: url(https://i.postimg.cc/C5w169YC/wallpaperflare-com-wallpaper-26.jpg);
