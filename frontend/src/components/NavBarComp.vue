@@ -14,22 +14,8 @@
         <li class="nav-item">
           <router-link class="nav-link" to="/about">About</router-link>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-         Programs
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Rock 101</a></li>
-            <li><a class="dropdown-item" href="#">Rookie</a></li>
-            <li><a class="dropdown-item" href="#">Adult 101</a></li>
-            <li><a class="dropdown-item" href="#">Performance</a></li>
-            <li><a class="dropdown-item" href="#">Songwriting</a></li>
-            <li><a class="dropdown-item" href="#">House Band</a></li>
-            <li><a class="dropdown-item" href="#">Little Wing</a></li>
-            <li><a class="dropdown-item" href="#">All Stars</a></li>
-          
-           
-          </ul>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/programs">Programs</router-link>
         </li>
         <li class="nav-item">
           <router-link class="nav-link" to="/events">Events</router-link>
@@ -45,6 +31,9 @@
         </li>
         <li class="nav-item">
           <router-link class="nav-link" to="/login">LogIn/Register</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/userProfile">Profile</router-link>
         </li>
       </ul>
     </div>

@@ -73,6 +73,7 @@ export default {
   justify-content: center;
   align-items: center;
   color: #c5202d;
+  background-attachment: fixed;
 }
 h1 {
   font-family: "Oswald", sans-serif;
