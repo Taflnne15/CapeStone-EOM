@@ -1,5 +1,8 @@
 <template>
   <div class="home">
+   
+
+
     <div class="Image">
       <h1>
         THE MOST REVOLUTIONARY <br />

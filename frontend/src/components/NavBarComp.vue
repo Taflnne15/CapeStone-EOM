@@ -49,7 +49,9 @@
 </script>
 
 <style scoped>
-.Nav{
+
+
+
   
-}
+
 </style>
