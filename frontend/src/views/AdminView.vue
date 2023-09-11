@@ -4,14 +4,109 @@
     Bookings being made and Users</h1>
     </div>
     <div class="tables">
+        <table class="table">
+        <thead>
+          <tr>
+            <th class="text-black">ID</th>
+            <th class="text-black">Name</th>
+            <th class="text-black">Description</th>
+            <th class="text-black">Date</th>
+          </tr>
+        </thead>
+        <tbody
+          id="whereTheyDisplay"
+          v-for="item in eventPosts"
+          :key="item.eventID"
+        >                            
+          <tr>
+            <td>{{ item.eventID}}</td>
+            <td>{{ item.eventName}}</td>
+            <td>{{ item.eventDescription}}</td>
+            <td>{{ item.eventDate}}</td>
+            <td>
+              <img :src="item.eventURL" alt="" width="10rem" />
+            </td>
+            <td><button class="edit-btn">Edit</button></td>
+            <td>
+              <button class="del-btn" @click="deleteProduct(item.eventID) ">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
     </div>
+    <AddEvents/>
+
+<table class="table">
+    <thead>
+          <tr>
+            <th class="text-black">UserID</th>
+            <th class="text-black">UserName</th>
+            <th class="text-black">UserSurname</th>
+            <th class="text-black">UserAge</th>
+            <th class="text-black">UserGender</th>
+            <th class="text-black">UserEmail</th>
+            <th class="text-black">UserPass</th>
+            <th class="text-black">UserInterest</th>
+            <th class="text-black">Image</th>
+          </tr>
+        </thead>
+
+        <tbody
+          id="whereTheyDisplay"
+          v-for="item in users"
+          :key="item.userID"
+        >                            
+          <tr>
+            <td>{{ item.userID}}</td>
+            <td>{{ item.userName}}</td>
+            <td>{{ item.UserSurname}}</td>
+            <td>{{ item.userAge}}</td>
+            <td>{{ item.userGender}}</td>
+            <td>{{ item.userEmail}}</td>
+            <td>{{ item.userPass}}</td>
+            <td>{{ item.userInterest}}</td>
+            <td>{{ item.userImage}}</td>
+            <td>
+              <img :src="item.userProfileUrl" alt="" width="10rem" />
+            </td>
+            <td><button class="edit-btn">Edit</button></td>
+            <td>
+              <button class="del-btn" @click="deleteProduct(item.eventID) ">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+
+</table>
 </template>
 
 <script>
-    export default {
-        
+import AddEvents from '@/components/AddEventsComp.vue';
+export default {
+  components:{
+    AddEvents
+  },
+  computed: {
+    event() {
+      return this.$store.state.eventPosts;
+    },
+    users() {
+      return this.$store.state.users;
     }
+  },
+  mounted() {
+    this.$store.dispatch("fetchUsers");
+    this.$store.dispatch("fetchEvents");
+  },
+  methods:{
+    deleteEvents(eventID){
+      this.$store.dispatch('deleteEvents', eventID)
+    },
+    // deleteUsers(userId){
+    //   this.$store.dispatch('deleteUsers', userID)
+    // },
+  }
+};
 </script>
 
 <style scoped>
