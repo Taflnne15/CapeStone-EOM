@@ -10,7 +10,7 @@ fetchUsers(req, res){
     FROM Users; 
     `
     db.query(query, (err, results) => {
-        if (err) throw err;
+        if(err) throw err;
         res.json({
           status: res.statusCode,
           results,
