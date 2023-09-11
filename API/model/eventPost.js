@@ -5,7 +5,7 @@ fetchEvents(req, res){
     const query = `
     SELECT eventID ,eventName, 
     eventDescription, eventDate
-    FROM Users; 
+    FROM eventPosts; 
     `
     db.query(query, (err, data)=>{
         if (err) throw ErrorCodes.json({

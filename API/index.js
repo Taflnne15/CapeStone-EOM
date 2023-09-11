@@ -29,7 +29,7 @@ app.use(
 app.use(errorHandling);
 // Server
 routes.get("^/$|/home", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./static/html/index.html"));
+  res.sendFile(path.resolve(__dirname, './static/html/index.html'));
 });
 app.listen(port, () => {
   console.log(`The server is running on port : ${port}`);
