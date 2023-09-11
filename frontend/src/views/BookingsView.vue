@@ -29,7 +29,7 @@
   2.Make sure you have filled out the spaces that specifies your user details. <br>
   3.If need be to cancel a booking you may do so telephonically @021 480 5566 or email us taflynnepetersen@gmail.com. <br>
 4. For any changes please rebook and state why you changing your booking also state that you rebooking. <br>
-5. 
+
 </p>
  
 </div>
