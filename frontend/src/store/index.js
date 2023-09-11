@@ -35,6 +35,7 @@ export default createStore({
       state.msg = msg
     }
   },
+ 
   actions: {
     async fetchUsers(context){
       try{
@@ -44,7 +45,21 @@ export default createStore({
         context.commit("setMsg", "An error has occured")
       }
     }
+export default createStore ({ 
+  actions: {
+    try{
+      const {msg, token, results}=(await axios.post
+        (`${}user/login`, payload)).data
+        if(result){
+          context.commit('setUser'.{result.msg})
+          cookies.set('LegitUser', {token, msg, result})
+        }
+    }
+  }
+})
   },
   modules: {
   }
+
+
 })
