@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const {verifyToken} = require('../middleware/authenticate')
 const routes = express.Router()
-const {users, bookings, eventPost} = require('../model')
+const {users, bookings, events} = require('../model')
 
 routes.get('/users', (req, res)=>{
     users.fetchUsers(req,res)
@@ -10,8 +10,8 @@ routes.get('/users', (req, res)=>{
 routes.get('/user/:id', (req,res)=>{
     users.fetchUser(req, res)
 })
-routes.get('./eventPosts',(req, res)=>{
-    eventPosts.fetcheventPosts(req, res)
+routes.get('/eventPosts',(req, res)=>{
+    events.fetchEvents(req, res)
 })
 
 routes.post('/register', bodyParser.json(),
