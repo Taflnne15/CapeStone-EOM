@@ -21,6 +21,11 @@
 <p>Our teaching approach at [Music School Name] is tailored to nurture musical proficiency and passion in every student. We prioritize personalized instruction, fostering creativity, and building a strong foundation in music theory. Our experienced faculty employs a blend of traditional methods and innovative techniques to ensure a comprehensive learning experience. Practical application through ensemble playing and performance opportunities is integral to honing skills and boosting confidence. Through this holistic approach, we aim to inspire a lifelong love for music and empower our students to become accomplished musicians. <br> <br> and skill levels. Our dedicated faculty provides expert instruction in a wide range of instruments and musical styles. We prioritize individualized learning, fostering creativity, and building a strong foundation in music theory. Through ensemble playing, performance opportunities, and a supportive community, we cultivate well-rounded musicians. Whether a beginner or advanced player, we aim to inspire a lifelong love for music and nurture musical excellence." </p>
   </div>
 </div>
+
+<div class="space">
+
+</div>
+
   </div>
   <div class="container text-center">
     <div class="row align-items-center">
@@ -146,6 +151,8 @@ h5{
   height: 100vh;
 } */
 .pinfo{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: black;
   margin-top: 80px;
 }
 .how{
@@ -153,11 +160,20 @@ color: black;
 }
 p{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: black;
+  color: #c5202d;
 }
 .col{
   margin-top: 80px;
 }
+.space{
+
+  margin-top: 100px;
+}
+h2{
+  font-family: "Oswald", sans-serif;
+  color: black;
+}
+
 
 
 

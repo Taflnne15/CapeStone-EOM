@@ -1,9 +1,12 @@
 <template>
     
     <div class="Login">
+   
         <br>
     <br>
         <div class="LogIn">
+          <h2>Login</h2>
+          <div class="inputs">
         <div class="container text-center">
   <div class="row align-items-center">
    
@@ -34,6 +37,7 @@
 </div>
 
         </div>
+        </div>
 </div>
 </template>
 
@@ -53,6 +57,8 @@
 
 }
 .LogIn{
+  margin-top: 80px;
+  color: white;
 margin-left: 25%;
     width: 50%;
     border: 4px solid white;
@@ -60,6 +66,9 @@ margin-left: 25%;
 }
 label{
     margin-left: 30px;
+}
+.inputs{
+  margin-top: 100px;
 }
 
 </style>

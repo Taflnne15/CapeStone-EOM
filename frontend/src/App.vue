@@ -22,7 +22,7 @@ nav a {
   color: #2c3e50;
 }
 
-nav a.router-link-exact-active {
+nav .router-link-exact-active {
   color: #c5202d;
 }
 </style>

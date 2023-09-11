@@ -61,7 +61,7 @@ Unlock your <span class="words1">musical potential</span> with our expert music 
   width: 100%;
   height: 100vh;
   /* background: red; */
-  background-image: url(https://i.postimg.cc/c1FQKzVn/wallpaperflare-com-wallpaper-18.jpg);
+  background-image: url(https://i.postimg.cc/DzrcfS6b/Jared-Blog.png);
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -121,6 +121,7 @@ font-size: x-large;
   color: #c5202d;
 }
 .partners{
+  margin-top: 100px;
 height: 100vh;
 background-color: black;
 }
