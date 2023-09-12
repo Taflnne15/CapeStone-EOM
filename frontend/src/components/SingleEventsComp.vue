@@ -1,5 +1,5 @@
 <template>
-    <div class="events">
+    <div>
         <div class="card mb-3" v-for="item in eventPosts" :key="item" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
@@ -10,6 +10,7 @@
         <h5 class="card-title">{{ item.eventName }}</h5>
         <p class="card-text">{{ item.eventDescription }}</p>
         <p class="card-text"><small class="text-body-secondary">{{ item.eventDate }}</small></p>
+        <router-link to="/events" class="btn-btn-primary">Back</router-link>
       </div>
     </div>
   </div>
@@ -19,14 +20,7 @@
 
 <script>
     export default {
-      computed: {
-eventPosts(){
-   return this.$store.state.eventPosts
-}
-      }  ,
-mounted(){
-    this.$store.dispatch("fetchEventPosts")
-}
+        
     }
 </script>
 

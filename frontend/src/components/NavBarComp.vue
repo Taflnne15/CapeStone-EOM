@@ -35,6 +35,9 @@
         <li class="nav-item">
           <router-link class="nav-link" to="/userProfile">Profile</router-link>
         </li>
+        <li class="nav-item">
+          <button @click="logout()">logout</button>
+        </li>
       </ul>
     </div>
   </div>
@@ -44,7 +47,11 @@
 
 <script>
     export default {
-        
+     methods:{
+      logout(){
+        this.$store.dispatch("logOut")
+      }
+     }   
     }
 </script>
 

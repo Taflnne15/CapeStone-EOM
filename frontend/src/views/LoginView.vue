@@ -12,24 +12,23 @@
    
     <div class="col">
      
-      <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Email address</label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" required>
-</div>
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Full Name </label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Taflynne Petersen" required>
-</div>
-<form class="row g-3">
+<form class="row g-3" @submit.prevent="login">
 
+  <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+   v-model="payload.userEmail" required>
+</div>
   <div class="col-auto">
     <label for="inputPassword2" class="visually-hidden">Password</label>
-    <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+    <input type="password" class="form-control" id="inputPassword2" v-model="payload.userPass" placeholder="Password">
   </div>
   <div class="col-auto">
-    <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+    <button type="submit" class="btn btn-primary mb-3">login</button>
   </div>
 </form>
+
+<router-link to="/register">Register</router-link>
 
     </div>
     
@@ -42,8 +41,30 @@
 </template>
 
 <script>
+import { useCookies } from "vue3-cookies";
+const { cookies } = useCookies();
+
     export default {
-        
+      data(){
+        return{
+          payload:{
+            userEmail:"",
+            userPass:"",
+          }
+        }
+      }  ,
+      methods:{
+        login() {
+      this.$store.dispatch("login", this.payload);
+    },
+    beforeCreate() {
+      this.$store.dispatch("fetchUser")
+    },
+    mounted() {
+      console.log(cookies.get("tatty"));
+    },
+
+      },
     }
 </script>
 

@@ -1,11 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+// import sweet from "sweetalert";
+import { useCookies } from "vue3-cookies";
+// import authenticateUser from '@/services/authenticateUser';
 
+const { cookies } = useCookies();
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    beforeEnter() {
+      if(!cookies.get("tatty")) {
+        router.push({name: "login"})
+      }
+    }
   },
   {
     path: '/about',
@@ -15,8 +24,10 @@ const routes = [
   {
     path: '/programs',
     name: 'prgrams',
-    component: () => import('../views/ProgramsView.vue')
-  },
+    component: () => import('../views/ProgramsView.vue'),
+    
+    },
+  
   {
     path: '/events',
     name: 'events',
@@ -25,8 +36,14 @@ const routes = [
   {
     path: '/bookings',
     name: 'bookings',
-    component: () => import('../views/BookingsView.vue')
+    component: () => import('../views/BookingsView.vue'),
+    beforeEnter() {
+      if (!cookies.get('Tatty')) {
+        router.push({ name: 'login' })
+      }
   },
+
+},
   {
     path: '/admin',
     name: 'admin',
@@ -47,6 +64,11 @@ const routes = [
     name: 'userprofile',
     component: () => import('../views/UserProfileView.vue')
   },
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import('../views/RegisterView.vue')
+  }
 ]
 
 const router = createRouter({

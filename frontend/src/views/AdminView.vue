@@ -90,7 +90,7 @@ AddEventsComp,
 AddUserComp
   },
   computed: {
-    event() {
+    eventPosts() {
       return this.$store.state.eventPosts;
     },
     users() {
@@ -99,15 +99,15 @@ AddUserComp
   },
   mounted() {
     this.$store.dispatch("fetchUsers");
-    this.$store.dispatch("fetchEvents");
+    this.$store.dispatch("fetchEventPosts");
   },
   methods:{
-    deleteEvents(eventID){
-      this.$store.dispatch('deleteEvents', eventID)
+    deleteEventPosts(eventID){
+      this.$store.dispatch('deleteEventPosts', eventID)
     },
-    // deleteUsers(userId){
-    //   this.$store.dispatch('deleteUsers', userID)
-    // },
+    deleteUsers(userID){
+      this.$store.dispatch('deleteUsers', userID)
+    },
   }
 };
 </script>

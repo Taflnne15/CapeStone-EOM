@@ -32,14 +32,16 @@
     export default {
     data(){
       return{
-userName: "",
-userSurname: "",
-userAge: "",
-userGender: "",
-userEmail: "",
-userPass: "",
-userInterest: "",
-userProfileUrl: ""
+        userForm: {
+          userName: "",
+          userSurname: "",
+          userAge: "",
+          userGender: "",
+          userEmail: "",
+          userPass: "",
+          userInterest: "",
+          userProfileUrl: ""
+        }
       }
     },
     computed:{
