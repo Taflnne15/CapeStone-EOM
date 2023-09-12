@@ -9,13 +9,14 @@
       </div>
       <div class="modal-body">
         <form>
-            <input type="text" :v-model="userForm.firstName" placeholder="firstName">
-            <input type="text" :v-model="userForm.lastName" placeholder="lastName">
+            <input type="text" :v-model="userForm.userName" placeholder="firstName">
+            <input type="text" :v-model="userForm.userSurname" placeholder="lastName">
             <input type="number" :v-model="userForm.userAge" placeholder="userAge">
-            <input type="text" :v-model="userForm.gender" placeholder="gender">
-            <input type="text" :v-model="userForm.userRole" placeholder="userRole">
-            <input type="text" :v-model="userForm.emailAdd" placeholder="emailAdd">
-            <input type="text" :v-model="userForm.profileUrl" placeholder="profileUrl">
+            <input type="text" :v-model="userForm.userGender" placeholder="gender">
+            <input type="text" :v-model="userForm.userEmail" placeholder="email">
+            <input type="text" :v-model="userForm.userPass" placeholder="pass">
+            <input type="text" :v-model="userForm.userInterest" placeholder="interest">
+            <input type="number" v-model="userForm.userProfileUrl" placeholder="profileUrl">
             <button type="submit" @click.prevent="submitUser">Add</button>
           </form>
         </div>
@@ -29,8 +30,32 @@
 
 <script>
     export default {
-        
+    data(){
+      return{
+userName: "",
+userSurname: "",
+userAge: "",
+userGender: "",
+userEmail: "",
+userPass: "",
+userInterest: "",
+userProfileUrl: ""
+      }
+    },
+    computed:{
+      message(){
+        return this.$store.state.msg
+      }
+    },
+    methods: {
+      submitUser(){
+        this.$store.dispatch('sumbitUser', this.userForm)
+        alert(this.message)
+      }
     }
+
+        }
+   
 </script>
 
 <style scoped>

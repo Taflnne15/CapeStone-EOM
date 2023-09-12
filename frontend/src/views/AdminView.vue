@@ -72,19 +72,22 @@
             </td>
             <td><button class="edit-btn">Edit</button></td>
             <td>
-              <button class="del-btn" @click="deleteProduct(item.eventID) ">Delete</button>
+              <button class="del-btn" @click="deleteProduct(item.userID)">Delete</button>
             </td>
           </tr>
         </tbody>
-
+        <AddUserComp/>
+      <AddEventsComp/>
 </table>
 </template>
 
 <script>
-import AddEvents from '@/components/AddEventsComp.vue';
+import AddEventsComp from '@/components/AddEventsComp.vue';
+import AddUserComp from '@/components/AddUserComp.vue';
 export default {
   components:{
-    AddEvents
+AddEventsComp,
+AddUserComp
   },
   computed: {
     event() {
@@ -125,8 +128,5 @@ export default {
 }
 h1{
     color: white;
-}
-.tables{
-    height: 100vh;
 }
 </style>

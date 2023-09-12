@@ -1,6 +1,5 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
-
 const Capstoneurl = 'https://capstone-houp.onrender.com'
 
 export default createStore({
@@ -8,7 +7,7 @@ export default createStore({
     users: null,
     user: null,
     events:null,
-    evnt: null,
+    event: null,
     spinner: null,
     token:null,
     msg:null,
@@ -40,7 +39,7 @@ export default createStore({
   actions: {
     async fetchUsers(context){
       try{
-        const{data} = (await axios.get(`${Capstoneurl}users`)).data
+        const{data} = (await axios.get(`${Capstoneurl}users`))
         context.commit("setUser", data.results)
       }catch(e){
         context.commit("setMsg", "An error has occured")
