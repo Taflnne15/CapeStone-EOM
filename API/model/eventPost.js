@@ -15,7 +15,7 @@ fetchEvents(req, res){
         });
     });
 }
-updateEvent(req, res){
+updateEvents(req, res){
     const query = `
     UPDATE eventPosts SET ?
     WHERE eventID ;
@@ -29,7 +29,7 @@ updateEvent(req, res){
         });
       })
 }
-deleteEvnts(req, res){
+deleteEvents(req, res){
     const query =`
     DELETE FROM eventPosts
     WHERE eventID = ${req.params.id};
