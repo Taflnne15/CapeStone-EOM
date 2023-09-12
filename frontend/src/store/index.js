@@ -40,10 +40,11 @@ export default createStore({
     async fetchUsers(context){
       try{
         const{data} = (await axios.get(`${Capstoneurl}users`))
-        context.commit("setUser", data.results)
+        context.commit("setUser",data.results)
       }catch(e){
         context.commit("setMsg", "An error has occured")
       }
+      
     }
     
   },
