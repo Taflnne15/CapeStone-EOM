@@ -50,6 +50,7 @@
      methods:{
       logout(){
         this.$store.dispatch("logOut")
+        location.reload()
       }
      }   
     }

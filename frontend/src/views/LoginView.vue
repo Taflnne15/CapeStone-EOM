@@ -26,9 +26,10 @@
   <div class="col-auto">
     <button type="submit" class="btn btn-primary mb-3">login</button>
   </div>
+  <router-link to="/register">Register</router-link>
 </form>
 
-<router-link to="/register">Register</router-link>
+
 
     </div>
     

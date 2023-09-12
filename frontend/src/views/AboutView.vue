@@ -49,12 +49,15 @@ Unlock your <span class="words1">musical potential</span> with our expert music 
     </div>
   </div>
 </div>
+<div class="partners">
+  <span class="partners-span"> <span class="span5">Ibanez</span>, known for innovation and quality, <br> offers a diverse range of guitars favored by musicians across genres. Their sleek designs and versatile tones make them a top choice. <br> <span class="span5">Cort</span> combines craftsmanship with affordability, providing exceptional value and comfortable playability. , an iconic force in music history, produces timeless guitars like the Stratocaster and Telecaster, celebrated for their design, tone, and playability.</span>
+
+</div>
   </div>
 </div>
   </div>
-  <div class="partners">
-<span class="partners-span"> <span class="span5">Ibanez</span>, known for innovation and quality, <br> offers a diverse range of guitars favored by musicians across genres. Their sleek designs and versatile tones make them a top choice. <br> <span class="span5">Cort</span> combines craftsmanship with affordability, providing exceptional value and comfortable playability. , an iconic force in music history, produces timeless guitars like the Stratocaster and Telecaster, celebrated for their design, tone, and playability.</span>
-  </div>
+
+
 </template>
 <style>
 .about{
@@ -120,11 +123,11 @@ font-size: x-large;
 .words1{
   color: #c5202d;
 }
-.partners{
+/* .partners{
   margin-top: 100px;
 height: 100vh;
 background-color: black;
-}
+} */
 
 .partners-span{
 

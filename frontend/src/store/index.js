@@ -30,7 +30,13 @@ export default createStore({
     setUser(state, user){
       state.user = user
     },
+    updateUser(state, user){
+      state.user = user
+    },
     setEventPosts(state, eventPosts){
+      state.eventPosts = eventPosts
+    },
+    updateEventPosts(state, eventPosts){
       state.eventPosts = eventPosts
     },
     setEventPost(state, eventPost){
@@ -61,6 +67,17 @@ export default createStore({
         context.commit("setMsg", "An error has occured")
       }
     } ,
+    async deleteUsers(context, userID){
+      try{
+        const data = await axios.delete(`${Capstoneurl}users/${userID}`)
+        if(data){
+          context.commit('fetchUsers')
+        }
+      }catch(error){
+        alert(error)
+      }
+    },
+
     async fetchEventPosts(context){
       try{
         const{results} = await (await axios.get(`${Capstoneurl}eventPosts`)).data
@@ -68,7 +85,29 @@ export default createStore({
       }catch(e){
         context.commit("setMsg", "An error has occured")
       }
-    } ,
+    },
+    async deleteEventPosts(context, eventID){
+      try{
+        const data = await axios.delete(`${Capstoneurl}EventPosts/${eventID}`)
+        context.commit('fetchEventPosts', data)
+      }catch(error){
+        alert(error)
+      }
+    },
+    async addEventPosts({ commit }, eventPostsdata) {
+      try {
+        const response = await axios.post(`${Capstoneurl}eventPosts`, eventPostsdata);
+        location.reload();
+        commit('setEventPosts', response.data);
+      } catch (error) {
+        console.error('Error adding event:', error);
+      }
+    },
+    // async addUser({commit}, userdata) {
+    //   const response = await axios.post(`${Capstoneurl}register`, userdata);
+    //     location.reload();
+    //     commit('setAddUser', response.data);
+    // },
    //register user
    async register(context, payload) {
     try {
@@ -129,6 +168,7 @@ export default createStore({
       context.commit("setUser")
       cookies.remove("tatty")
   },
+
 
 
 
