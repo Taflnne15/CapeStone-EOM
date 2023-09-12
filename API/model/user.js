@@ -33,73 +33,70 @@ fetchUser(req, res){
             })
         })
 }
-login(req, res){
-    const {userEmail, userPass} = req.body;
-const query = `
-SELECT userID, userName, userSurname, userAge, userGender, 
-userEmail, userInterest, userProfileUrl
-FROM Users
-WHERE userEmail = '${userEmail}';
-`
-db.query(query, async(err, results)=>{
-    if (err) throw err
-    if (!results?.length){
+login(req, res) {
+    const { userEmail, userPass } = req.body;
+    // query
+    const query = `
+        SELECT userName, userSurname, userAge, userGender, userEmail, userPass, userInterest, userProfileUrl
+        FROM Users
+        WHERE userEmail = '${userEmail}';
+        `;
+    db.query(query, async (err, result) => {
+      if (err) throw err;
+      if (!result?.length) {
         res.json({
-            status: res.statusCode,
-            msg: "You provided athe wrong email"
-        })
-    } else {
-        compare(userPass, results[0].userPass, (cErr, cResult)=>{
-            if(cErr) throw cErr
-            //creating a token
-            const token = createToken({
-                userEmail, 
-                userPass
+          status: res.statusCode,
+          msg: "You provided a wrong email.",
+        });
+      } else {
+        await compare(userPass, result[0].userPass, (cErr, cResult) => {
+          if (cErr) throw cErr;
+          // Create a token
+          const token = createToken({
+            userEmail,
+            userPass,
+          });
+          if (cResult) {
+            res.json({
+              msg: "Logged in",
+              token,
+              result: result[0],
             });
-            if(cResult){
-                res.json({
-                    msg: "Logged In",
-                    token,
-                    result: results[0]
-                });
-
-            } else{
-                res.json({
-                    status: res.statusCode,
-                    msg: "Invalid Password"
-                });
-            }
-        })
-    }
-})
-
-}
-async register(req, res){
-    const data = req.body
-    //encrypt password
-    data.userPass = hash(data.userPass, 10)
-    //payload
+          } else {
+            res.json({
+              status: res.statusCode,
+              msg: "Invalid password or you have not registered",
+            });
+          }
+        });
+      }
+    });
+  }
+  async register(req, res) {
+    const data = req.body;
+    // encrypt password
+    data.userPass = await hash(data.userPass, 10);
+    //payload - data coming from user
     const user = {
-        userEmail:data.userEmail,
-        userPass:data.userPass
-    }
-    //creating users details 
-    //the query
-    const query =`
-    INSERT INTO Users
-    SET ?
-    `
-    db.query(query, [data], (err)=>{
-        if(err) throw err 
-        //creating token
-        let token = createToken(user)
-        res.json({
-            status: res.statusCode,
-            token,
-            msg: "You are now registered"
-        })   
-    })
-}
+      userEmail: data.userEmail,
+      userPass: data.userPass,
+    };
+    //query
+    const query = `
+        INSERT INTO Users
+        SET ?;
+        `;
+    db.query(query, [data], (err) => {
+      if (err) throw err;
+      //create token
+      let token = createToken(user);
+      res.json({
+        status: res.statusCode,
+        token,
+        msg: "You are now registered",
+      });
+    });
+  }
 updateUser(req, res){
     const query =`
     UPDATE Users
