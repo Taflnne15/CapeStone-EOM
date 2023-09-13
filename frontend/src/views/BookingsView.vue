@@ -22,17 +22,6 @@
 </div>
 
     </div>
-<div class="Rules">
-<h2>Please refer to our guidelines on bookings</h2>
-<p>These guidelines are to help us track our bookings and help you understand the terms of your booking: <br>
-    1.When making a booking please specify what type of booking is being made, especially if its a one-on-one meeting with our instructors. <br>
-  2.Make sure you have filled out the spaces that specifies your user details. <br>
-  3.If need be to cancel a booking you may do so telephonically @021 480 5566 or email us taflynnepetersen@gmail.com. <br>
-4. For any changes please rebook and state why you changing your booking also state that you rebooking. <br>
-
-</p>
- 
-</div>
 
 </template>
 

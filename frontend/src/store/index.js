@@ -5,6 +5,7 @@ import sweet from "sweetalert";
 import authenticateUser from '@/services/authenticateUser';
 import router  from '@/router';
 import { useCookies } from "vue3-cookies";
+import { response } from 'express';
 const { cookies } = useCookies();
 
 
@@ -36,8 +37,8 @@ export default createStore({
     setEventPosts(state, eventPosts){
       state.eventPosts = eventPosts
     },
-    updateEventPosts(state, eventPosts){
-      state.eventPosts = eventPosts
+    updateEventPost(state, eventPost){
+      state.eventPost = eventPost
     },
     setEventPost(state, eventPost){
       state.eventPost = eventPost
@@ -59,6 +60,7 @@ export default createStore({
         context.commit("setMsg", "An error has occured")
       }
     } ,
+    //-----fetch users----
     async fetchUser(context){
       try{
         const{data} = (await axios.get(`${Capstoneurl}user`)).data
@@ -67,6 +69,7 @@ export default createStore({
         context.commit("setMsg", "An error has occured")
       }
     } ,
+    //------------------------
     async deleteUsers(context, userID){
       try{
         const data = await axios.delete(`${Capstoneurl}users/${userID}`)
@@ -77,23 +80,35 @@ export default createStore({
         alert(error)
       }
     },
-
+ //-----------------Fetch Eventpost-----------------------------------
     async fetchEventPosts(context){
       try{
-        const{results} = await (await axios.get(`${Capstoneurl}eventPosts`)).data
-        context.commit("setEventPosts",results)
+        const{ data } = await (await axios.get(`${Capstoneurl}eventPosts`)).data
+        context.commit("setEventPosts",data)
       }catch(e){
         context.commit("setMsg", "An error has occured")
       }
     },
-    async deleteEventPosts(context, eventID){
-      try{
-        const data = await axios.delete(`${Capstoneurl}EventPosts/${eventID}`)
-        context.commit('fetchEventPosts', data)
-      }catch(error){
-        alert(error)
+    //_____________________________________________________________________________-
+    async fetcheventPost(context, eventID) {
+      try {
+        const {result} = (await axios.get(`${Capstoneurl}eventPost/${eventID}`)).data;
+        context.commit('setEventPost', result);
+      } catch (error) {
+        console.error('Error fetching eventPost:', error);
       }
     },
+    //---------------------------------------------------------------
+    async deleteventPost({ commit }, eventID) {
+      try {
+        await axios.delete(`${Capstoneurl}eventPost/${eventID}`);
+        location.reload();
+        commit('seteventPosts', response.data);
+      } catch (error) {
+        console.error('Error deleting eventPost:', error);
+      }
+    },
+    //____________________________________________________________________
     async addEventPosts({ commit }, eventPostsdata) {
       try {
         const response = await axios.post(`${Capstoneurl}eventPosts`, eventPostsdata);
@@ -103,11 +118,6 @@ export default createStore({
         console.error('Error adding event:', error);
       }
     },
-    // async addUser({commit}, userdata) {
-    //   const response = await axios.post(`${Capstoneurl}register`, userdata);
-    //     location.reload();
-    //     commit('setAddUser', response.data);
-    // },
    //register user
    async register(context, payload) {
     try {

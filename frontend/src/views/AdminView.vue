@@ -28,7 +28,7 @@
             </td>
             <td><button class="edit-btn">Edit</button></td>
             <td>
-              <button class="del-btn" @click="deleteProduct(item.eventID) ">Delete</button>
+              <button class="del-btn" @click="deleteeventPosts(item.eventID) ">Delete</button>
             </td>
           </tr>
         </tbody>
@@ -72,7 +72,7 @@
             </td>
             <td><button class="edit-btn">Edit</button></td>
             <td>
-              <button class="del-btn" @click="deleteProduct(item.userID)">Delete</button>
+              <button class="del-btn" @click="deleteEventPost(item.eventID)">Delete</button>
             </td>
           </tr>
         </tbody>
@@ -102,13 +102,20 @@ AddUserComp
     this.$store.dispatch("fetchEventPosts");
   },
   methods:{
-    deleteEventPosts(eventID){
+    deleteEventPost(eventID){
       this.$store.dispatch('deleteEventPosts', eventID)
     },
     deleteUsers(userID){
       this.$store.dispatch('deleteUsers', userID)
     },
-  }
+   async addEventPost(eventID){
+    this.$store.dispatch('addEventPost', eventID)
+   },
+   async addUsers(userID){
+    this.$store.dispatch('addUser', userID)
+   }
+  },
+
 };
 </script>
 
