@@ -81,7 +81,7 @@
 </table>
 </template>
 
-<script>
+<!-- <script>
 import AddEventsComp from '@/components/AddEventsComp.vue';
 import AddUserComp from '@/components/AddUserComp.vue';
 export default {
@@ -117,6 +117,49 @@ AddUserComp
   },
 
 };
+</script> -->
+
+<script>
+import AddEventsComp from '@/components/AddEventsComp.vue';
+import AddUserComp from '@/components/AddUserComp.vue';
+import UpdateEventsComp from '@/components/UpdateEventsComp.vue';
+import UpdateUserComp from '@/components/UpdateUserComp.vue';
+    export default {
+        components: {
+        AddEventsComp,
+        UpdateEventsComp,
+        UpdateUserComp,
+        AddUserComp,
+        },
+        computed: {
+            eventPosts(){
+                return this.$store.state.eventPosts
+            },
+            users(){
+                return this.$store.state.users
+            }
+
+        },
+        mounted(){
+            this.$store.dispatch("fetchUsers")
+            this.$store.dispatch("fetchEventPosts")
+        },
+        methods: {
+            deleteEventPost(eventID){
+                this.$store.dispatch('deleteEventPosts', eventID)
+            },
+            deleteUsers(userID){
+                this.$store.dispatch('deleteUsers', userID)
+            },
+            async addEventPost(eventID){
+                this.$store.dispatch('addEventPost', eventID)
+            },
+            async addUsers(userID){
+                this.$store.dispatch('addUser', userID)
+            }
+         }
+    
+    }
 </script>
 
 <style scoped>

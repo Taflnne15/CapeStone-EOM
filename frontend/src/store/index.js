@@ -5,7 +5,6 @@ import sweet from "sweetalert";
 import authenticateUser from '@/services/authenticateUser';
 import router  from '@/router';
 import { useCookies } from "vue3-cookies";
-import { response } from 'express';
 const { cookies } = useCookies();
 
 
@@ -80,6 +79,15 @@ export default createStore({
         alert(error)
       }
     },
+//-------------------------deleteEventPost---------------------------
+    async deleteeventPost({commit}, eventID){
+      try{
+        await axios.delete(`${Capstoneurl}eventPost/${eventID}`);
+        commit('seteventPosts', response.data);
+      }catch(error){
+        console.error('Error deleting eventPost', error)
+      }
+     },
  //-----------------Fetch Eventpost-----------------------------------
     async fetchEventPosts(context){
       try{
