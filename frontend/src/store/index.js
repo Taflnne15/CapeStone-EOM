@@ -80,7 +80,7 @@ export default createStore({
       }
     },
 //-------------------------deleteEventPost---------------------------
-    async deleteeventPost({commit}, eventID){
+    async deleteEventPost({commit}, eventID){
       try{
         await axios.delete(`${Capstoneurl}eventPost/${eventID}`);
         commit('seteventPosts', response.data);
@@ -98,7 +98,7 @@ export default createStore({
       }
     },
     //_____________________________________________________________________________-
-    async fetcheventPost(context, eventID) {
+    async fetchEventPost(context, eventID) {
       try {
         const {result} = (await axios.get(`${Capstoneurl}eventPost/${eventID}`)).data;
         context.commit('setEventPost', result);
@@ -107,15 +107,15 @@ export default createStore({
       }
     },
     //---------------------------------------------------------------
-    async deleteventPost({ commit }, eventID) {
-      try {
-        await axios.delete(`${Capstoneurl}eventPost/${eventID}`);
-        location.reload();
-        commit('seteventPosts', response.data);
-      } catch (error) {
-        console.error('Error deleting eventPost:', error);
-      }
-    },
+    // async deletEventPost({ commit }, eventID) {
+    //   try {
+    //     await axios.delete(`${Capstoneurl}eventPost/${eventID}`);
+    //     location.reload();
+    //     commit('setEventPosts', response.data);
+    //   } catch (error) {
+    //     console.error('Error deleting EventPost:', error);
+    //   }
+    // },
     //____________________________________________________________________
     async addEventPosts({ commit }, eventPostsdata) {
       try {

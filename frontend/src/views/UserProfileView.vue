@@ -42,7 +42,7 @@
 }
 .openSpace{
     height: 80vh;
-    background-color: #c5202d;
+   
 }
 .card{
     margin-top: 1000px;
