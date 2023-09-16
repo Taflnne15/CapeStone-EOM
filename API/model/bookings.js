@@ -1,81 +1,86 @@
 const db = require("../config")
 
-class Bookings{
-    fetchBookings(req, res){
-        const query = 
-        `
-        SELECT bookings.bookingID, Users.userID, 
-        events.eventsID
+class Bookings {
+    fetchAllBookings(req, res) {
+        const query =
+            `
+        SELECT * 
         FROM bookings
-        INNER JOIN 
-        Users ON bookings.bookingID = Users.userID
-        INNER JOIN 
-        eventPosts on bookings.eventID = eventPosts.eventID
         `
-        db.query(query, (err, results)=>{
-            if(err) throw err;
+        db.query(query, (err, results) => {
+            if (err) throw err;
             res.json({
                 status: res.statusCode,
                 results
             });
         });
     }
-    fetchBookings(req, res){
+    fetchBookingsByUserID(req, res) {
+        const query =
+            `
+            SELECT eventPosts.*, bookings.bookingID
+            FROM bookings
+            INNER JOIN eventPosts ON bookings.eventID = eventPosts.eventID
+            INNER JOIN Users ON bookings.userID = Users.userID
+            WHERE Users.userID = ${req.params.userID};            
+        `
+        db.query(query, [req.params.userID], (err, results) => {
+            if (err) throw err;
+            res.json({
+                status: res.statusCode,
+                results
+            });
+        });
+    }
+
+    getBookingByID(req, res) {
         const query = `
-        SELECT bookings.bookingID, Users.userID, 
-        events.eventsID
+        SELECT eventPosts.*
         FROM bookings
         INNER JOIN 
-        Users ON bookings.bookingID = Users.userID
-        INNER JOIN 
         eventPosts on bookings.eventID = eventPosts.eventID
-        WHERE bookingID = ${req.params.bookingsID};
+        WHERE bookingID = ${req.params.bookingID};
         `
-        db.query(query, [req.params.bookingID], (err, reults)=>{
-            if(err) throw err
+        db.query(query, [req.params.bookingID], (err, results) => {
+            if (err) throw err
             res.json({
                 status: res.statusCode,
                 results
             });
         });
     }
-    insertBooking(req, res){
-        const query =`
-        INSERT INTO bookings VALUES(${req.params.bookingID}, ${req.params.userID}, ${req.params.bookingID})
+
+    insertBooking(req, res) {
+        const {
+            userID
+        } = req.body
+
+
+        const query = `
+        INSERT INTO bookings (eventID, userID) VALUES (?, ?);
         `
-        db.query(query, [req.body, req.params.bookingID, req.params.userID, req.params.bookingID],
-            (err)=>{
-                if(err) throw err
+
+        db.query(query, [req.params.eventID, userID],
+            (err) => {
+                if (err) throw err
                 res.json({
                     status: res.statusCode,
                     msg: "Your booking has been added successfully"
                 })
             })
     }
-    async updateBooking(req, res){
-        const query =`
-        UPDATE bookings SET ?
-        `
-        db.query(query, (err)=>{
-            if(err) throw err
-            res.json({
-                status: res.statusCode,
-                msg: "Bookings Update successfully"
-            });
-        });
-    
-    }
-    removeBookings(req, res){
-        const query =`
+
+    removeBooking(req, res) {
+        const query = `
         DELETE FROM bookings WHERE bookingID
 = ${req.params.bookingID} `
-db.query(query, [req.params.bookingID], (err)=>{
-    if(err) throw err
-    res.json({
-        status: res.statusCode,
-        msg: "Bookings deleted succesfully"
-    });
-});
+        db.query(query, [req.params.bookingID], (err) => {
+            if (err) throw err
+            res.json({
+                status: res.statusCode,
+                msg: "Bookings deleted succesfully"
+            });
+        });
     }
 
 

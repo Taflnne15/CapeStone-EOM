@@ -32,6 +32,33 @@ users.updateUser(req, res)
 routes.delete('/users/:id', (req, res)=>{
     users.deleteUser(req, res)
 })
+
+
+// Define your routes
+routes.get('/bookings', (req, res) => {
+    bookings.fetchAllBookings(req, res);
+});
+
+routes.get('/bookings/:userID', (req, res) => {
+    bookings.fetchBookingsByUserID(req, res);
+});
+
+  routes.get('/booking/:bookingID', (req, res) => {
+    bookings.getBookingByID(req, res);
+  });
+
+routes.post('/bookings/:eventID', bodyParser.json(), (req, res) => {
+    bookings.insertBooking(req, res);
+});
+
+routes.put('/bookings/:bookingID', (req, res) => {
+    bookings.updateBooking(req, res);
+});
+
+routes.delete('/bookings/:bookingID', (req, res) => {
+    bookings.removeBooking(req, res);
+});
+
 module.exports = {
     express,
     routes
