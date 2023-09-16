@@ -17,11 +17,15 @@
   <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Email address</label>
   <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
-   v-model="payload.userEmail" required>
+   v-model="payload.userEmail" required oninvalid="this.setCustomValidity('Please insert full name')"
+            oninput="this.setCustomValidity('')"
+          />
 </div>
   <div class="col-auto">
     <label for="inputPassword2" class="visually-hidden">Password</label>
-    <input type="password" class="form-control" id="inputPassword2" v-model="payload.userPass" placeholder="Password">
+    <input type="password" class="form-control" id="inputPassword2" v-model="payload.userPass" placeholder="Password" required oninvalid="this.setCustomValidity('Please insert full name')"
+            oninput="this.setCustomValidity('')"
+          />
   </div>
   <div class="col-auto">
     <button type="submit" class="btn btn-primary mb-3">login</button>

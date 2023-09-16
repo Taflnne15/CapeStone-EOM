@@ -40,6 +40,7 @@ export default createStore({
       state.eventPost = eventPost
     },
     setEventPost(state, eventPost){
+      console.log(eventPost)
       state.eventPost = eventPost
     },
     setSpinner(state, value){
@@ -59,7 +60,7 @@ export default createStore({
         context.commit("setMsg", "An error has occured")
       }
     } ,
-    //-----fetch users----
+    //-----fetch users----------------------
     async fetchUser(context){
       try{
         const{data} = (await axios.get(`${Capstoneurl}user`)).data
@@ -69,7 +70,7 @@ export default createStore({
       }
     } ,
     //------------------------
-    async deleteUsers(context, userID){
+    async deleteUsers({commit}, userID){
       try{
         const data = await axios.delete(`${Capstoneurl}users/${userID}`)
         if(data){
@@ -82,7 +83,7 @@ export default createStore({
 //-------------------------deleteEventPost---------------------------
     async deleteEventPost({commit}, eventID){
       try{
-        await axios.delete(`${Capstoneurl}eventPost/${eventID}`);
+      const data =  await axios.delete(`${Capstoneurl}eventPost/${eventID}`);
         commit('seteventPosts', response.data);
       }catch(error){
         console.error('Error deleting eventPost', error)
@@ -91,17 +92,20 @@ export default createStore({
  //-----------------Fetch Eventpost-----------------------------------
     async fetchEventPosts(context){
       try{
-        const{ data } = await (await axios.get(`${Capstoneurl}eventPosts`)).data
-        context.commit("setEventPosts",data)
+        const {data}  =  await axios.get(`${Capstoneurl}eventPosts`)
+        console.log(data.results)
+        context.commit("setEventPosts", data.results)
       }catch(e){
         context.commit("setMsg", "An error has occured")
       }
     },
     //_____________________________________________________________________________-
     async fetchEventPost(context, eventID) {
-      try {
-        const {result} = (await axios.get(`${Capstoneurl}eventPost/${eventID}`)).data;
-        context.commit('setEventPost', result);
+      try { 
+        const {data} = await axios.get(`${Capstoneurl}eventPosts/${eventID}`);
+        console.log(data.results[0])
+        
+        context.commit('setEventPost', data.results[0]);
       } catch (error) {
         console.error('Error fetching eventPost:', error);
       }

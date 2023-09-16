@@ -31,11 +31,13 @@ const routes = [
   {
     path: '/events',
     name: 'events',
-    component: () => import('../views/EventsView.vue')
+    component: () => import('../views/EventsView.vue'),
+    props: true
   },
   {
-    path: '/singleevent',
+    path: '/events/:eventID',
     name: 'singleevent',
+    props:true,
     component: () => import('../views/SingleEventView.vue')
   },
   {

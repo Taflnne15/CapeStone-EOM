@@ -7,11 +7,14 @@
       <form action="https://formspree.io/f/xleynorg" method="POST">
       <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Email address</label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" required>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" required oninvalid="this.setCustomValidity('Please insert full name')"
+            oninput="this.setCustomValidity('')"
+/>
 </div>
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Need a call </label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="000 000 0000" required>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="000 000 0000" required oninvalid="this.setCustomValidity('Please insert full name')"
+            oninput="this.setCustomValidity('')" />
 </div>
 <div class="mb-3">
   <label for="exampleFormControlTextarea1" class="form-label">Message</label>

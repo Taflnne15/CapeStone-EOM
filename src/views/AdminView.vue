@@ -46,9 +46,8 @@
             <th class="text-black">UserAge</th>
             <th class="text-black">UserGender</th>
             <th class="text-black">UserEmail</th>
-            <th class="text-black">UserPass</th>
             <th class="text-black">UserInterest</th>
-            <th class="text-black">Image</th>
+         
           </tr>
         </thead>
 
@@ -64,15 +63,15 @@
             <td>{{ item.userAge}}</td>
             <td>{{ item.userGender}}</td>
             <td>{{ item.userEmail}}</td>
-            <td>{{ item.userPass}}</td>
+       
             <td>{{ item.userInterest}}</td>
-            <td>{{ item.userImage}}</td>
+         
             <td>
               <img :src="item.userProfileUrl" alt="" width="10rem" />
             </td>
             <td><button class="edit-btn">Edit</button></td>
             <td>
-              <button class="del-btn" @click="deleteEventPost(item.eventID)">Delete</button>
+              <button class="del-btn" @click="deleteUsers(item.usersID)">Delete</button>
             </td>
           </tr>
         </tbody>
@@ -145,16 +144,16 @@ import UpdateUserComp from '@/components/UpdateUserComp.vue';
             this.$store.dispatch("fetchEventPosts")
         },
         methods: {
-            deleteEventPost(eventID){
+            deleteeventPost(eventID){
                 this.$store.dispatch('deleteEventPosts', eventID)
             },
             deleteUsers(userID){
                 this.$store.dispatch('deleteUsers', userID)
             },
-            async addEventPost(eventID){
+           addEventPost(eventID){
                 this.$store.dispatch('addEventPost', eventID)
             },
-            async addUsers(userID){
+         addUsers(userID){
                 this.$store.dispatch('addUser', userID)
             }
          }

@@ -15,12 +15,12 @@
   </div>
 </div>
   </div>
-  <div class="programs-info">
-    <div class="pinfo">
-<h1><span class="how">HOW </span> WE TEACH ?</h1>
-<p>Our teaching approach at [Music School Name] is tailored to nurture musical proficiency and passion in every student. We prioritize personalized instruction, fostering creativity, and building a strong foundation in music theory. Our experienced faculty employs a blend of traditional methods and innovative techniques to ensure a comprehensive learning experience. Practical application through ensemble playing and performance opportunities is integral to honing skills and boosting confidence. Through this holistic approach, we aim to inspire a lifelong love for music and empower our students to become accomplished musicians. <br> <br> and skill levels. Our dedicated faculty provides expert instruction in a wide range of instruments and musical styles. We prioritize individualized learning, fostering creativity, and building a strong foundation in music theory. Through ensemble playing, performance opportunities, and a supportive community, we cultivate well-rounded musicians. Whether a beginner or advanced player, we aim to inspire a lifelong love for music and nurture musical excellence." </p>
+  <div class="Spansss">
+THIS ARE OUR RESULT DRIVEN BASED PROGRAMS THAT IS SUITABLE WITH AGE CATERGORY<br/>
+READ UP ON THE PROGRAMS TO CHECK UP ON WHICH ONE IS SUITABLE FOR YOU <span class="span1">BOOKING AN EVENT WILL ALSO ALLOW YOU GET A MORE IN DEPTH INFORMATION ABOUT PROGRAMS. </span> OUR PROGRAMS ARE TAILORED TO NURTURE YOUR MUSICAL PROFIENCY .
+    <br />
+  
   </div>
-</div>
 
 <div class="space">
 
@@ -160,7 +160,7 @@ color: black;
 }
 p{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #c5202d;
+  color: black;
 }
 .col{
   margin-top: 80px;

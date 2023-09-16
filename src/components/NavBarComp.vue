@@ -47,13 +47,23 @@
 
 <script>
     export default {
-     methods:{
+      computed: {
+        isAdmin() {
+      return this.result?.userRole?.toLowerCase() === "admin"
+    },
+    userAdmin() {
+      return this.result?.userRole?.toLowerCase() === "user"|| this.result?.userRole?.toLowerCase() === "admin"
+    },
+  },
+
+  methods:{
       logout(){
         this.$store.dispatch("logOut")
         location.reload()
       }
-     }   
-    }
+     }
+      }
+ 
 </script>
 
 <style scoped>
