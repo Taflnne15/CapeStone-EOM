@@ -5,8 +5,7 @@ const {createToken} = require('../middleware/authenticate')
 class Users {
 fetchUsers(req, res){
     const query = `
-    SELECT userID, userName, userSurname, userAge,
-    userGender, userEmail, userInterest, userProfileUrl
+        SELECT *
     FROM Users; 
     `
     db.query(query, (err, results) => {
@@ -19,8 +18,7 @@ fetchUsers(req, res){
 }
 fetchUser(req, res){
     const query = `
-    SELECT userID, userName, userSurname, userAge,
-    userGender, userEmail, userInterest, userProfileUrl
+    SELECT *
     FROM Users
     where userID =  ${req.params.id};
     `
@@ -28,18 +26,18 @@ fetchUser(req, res){
         (err, results)=>{
             if(err) throw err
             res.json({
-                status: statusCode,
+                status: res.statusCode,
                 results
             })
         })
 }
-login(req, res) {
+async login(req, res) {
     const { userEmail, userPass } = req.body;
     // query
     const query = `
-        SELECT userName, userSurname, userAge, userGender, userEmail, userPass, userInterest, userProfileUrl
+        SELECT *
         FROM Users
-        WHERE userEmail = '${userEmail}';
+        WHERE userEmail = '${userEmail}'
         `;
     db.query(query, async (err, result) => {
       if (err) throw err;
@@ -97,15 +95,19 @@ login(req, res) {
       });
     });
   }
-updateUser(req, res){
+async updateUser(req, res){
+const user = req.body;
+console.log(user.userPass);
+console.log(req.params.id);
     const query =`
     UPDATE Users
     SET ?
-    WHERE userID = ?
+    WHERE userID = ${req.params.id}
     `
-    db.query(query, [req, body, req.params],
+    user.userPass = await hash(user.userPass, 10)
+    db.query(query, [user, req.params.id],
         (err)=>{
-            if(err) throw err
+            if(err) throw err;
             res.json({
                 status: res.statusCode,
                 msg: "The user record was updated"
