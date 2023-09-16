@@ -7,13 +7,10 @@ import router  from '@/router';
 import { useCookies } from "vue3-cookies";
 const { cookies } = useCookies();
 
-
-
-
 export default createStore({
   state: {
     users: null,
-    user: null,
+    user: null || JSON.parse(localStorage.getItem("MusicUser")),
     eventPosts:null,
     eventPost: null,
     spinner: null,
@@ -28,7 +25,9 @@ export default createStore({
       state.users = users
     },
     setUser(state, user){
-      state.user = user
+      console.log(user)
+      localStorage.setItem("MusicUser", JSON.stringify(user.result))
+      state.user = user.result
     },
     updateUser(state, user){
       state.user = user
@@ -40,7 +39,6 @@ export default createStore({
       state.eventPost = eventPost
     },
     setEventPost(state, eventPost){
-      console.log(eventPost)
       state.eventPost = eventPost
     },
     setSpinner(state, value){
@@ -80,10 +78,33 @@ export default createStore({
         alert(error)
       }
     },
+    //--------------------EditUser------------------------
+    async updateUser(context, User){
+      try {
+        const response = await axios.patch(`${Capstoneurl}users/${User.userID}`, User)
+        console.log(response)
+        if (response.data.msg === "The user record was updated") {
+          sweet({
+            title: "User Updated",
+            text: msg,
+            icon: "success",
+            timer: 2000
+          })
+        }
+        // context.commit('editUsers', response.data)
+        context.dispatch("fetchUsers")
+      } catch (error) {
+        sweet({
+          title: "User Not Updated",
+          text: error,
+          icon: "error",
+          timer: 2000
+        })      }
+    },
 //-------------------------deleteEventPost---------------------------
     async deleteEventPost({commit}, eventID){
       try{
-      const data =  await axios.delete(`${Capstoneurl}eventPost/${eventID}`);
+      const {data} =  await axios.delete(`${Capstoneurl}eventPost/${eventID}`);
         commit('seteventPosts', response.data);
       }catch(error){
         console.error('Error deleting eventPost', error)
@@ -93,7 +114,6 @@ export default createStore({
     async fetchEventPosts(context){
       try{
         const {data}  =  await axios.get(`${Capstoneurl}eventPosts`)
-        console.log(data.results)
         context.commit("setEventPosts", data.results)
       }catch(e){
         context.commit("setMsg", "An error has occured")
@@ -103,7 +123,6 @@ export default createStore({
     async fetchEventPost(context, eventID) {
       try { 
         const {data} = await axios.get(`${Capstoneurl}eventPosts/${eventID}`);
-        console.log(data.results[0])
         
         context.commit('setEventPost', data.results[0]);
       } catch (error) {
@@ -161,7 +180,6 @@ export default createStore({
       const { msg, token, result } = (
         await axios.post(`${Capstoneurl}login`, payload) //login request`
       ).data;
-      // console.log( msg, token, result);
       if (result) {
         context.commit("setUser", { result, msg });
         cookies.set("tatty", { msg, token, result });
@@ -187,8 +205,8 @@ export default createStore({
   },
     //logout user
     async logOut(context) {
-      context.commit("setUser")
-      cookies.remove("tatty")
+      context.state.user = null
+      localStorage.removeItem("MusicUser")
   },
 
 
