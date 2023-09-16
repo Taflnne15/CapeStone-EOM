@@ -3,24 +3,40 @@ const db = require('../config')
 class Events {
 fetchEvents(req, res){
     const query = `
-    SELECT eventID ,eventName, 
-    eventDescription, eventDate
+    SELECT *
     FROM eventPosts; 
     `
-    db.query(query, (err, data)=>{
+    db.query(query, (err, results)=>{
         if (err) throw err
         res.json({
             status: res.statusCode,
-            data
+            results
         });
     });
 }
+
+fetchEventByID(req, res){
+    const query = `
+    SELECT *
+    FROM eventPosts
+    WHERE eventID = ${req.params.eventID} 
+    `
+    db.query(query, (err, results)=>{
+        if (err) throw err
+        res.json({
+            status: res.statusCode,
+            results
+        });
+    });
+}
+
 updateEvents(req, res){
+    const event = req.body
     const query = `
     UPDATE eventPosts SET ?
-    WHERE eventID ;
+    WHERE eventID = ${req.params.eventID};
     `
-    db.query(query,[req, body, req.params.ID],
+    db.query(query, event,
       (err)=>{
         if(err) throw err
         res.json({
@@ -29,6 +45,7 @@ updateEvents(req, res){
         });
       })
 }
+
 deleteEvents(req, res){
     const query =`
     DELETE FROM eventPosts
@@ -42,12 +59,15 @@ msg: "The events record has been deleted"
         })
     })
 }
+
 createEvents(req, res){
+    const event = req.body
+    console.log(event);
     const query=`
     INSERT INTO eventPosts
     SET ?
     `
-    db.query(query, (err)=>{
+    db.query(query, [event], (err)=>{
         if(err) throw err
         res.json({
             status: res.statusCode,
